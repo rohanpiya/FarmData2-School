@@ -158,3 +158,10 @@ input[type='checkbox'] {
   box-shadow: none;
   width: auto;
 }
+
+#shoppingItemsTable,
+tr,
+th,
+td {
+  border: 1px solid black;
+}

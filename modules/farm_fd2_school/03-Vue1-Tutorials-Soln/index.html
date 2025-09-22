@@ -16,9 +16,37 @@
           v-for="item in items"
           v-bind:key="item.id"
         >
-          {{item.label}}
+          {{item.quantity}} {{item.label}}
         </li>
       </ul>
+      <table id="shoppingItemsTable">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Quantity</th>
+            <th>Item</th>
+          </tr>
+          <tr
+            v-for="item in items"
+            v-bind:key="item.id"
+          >
+            <td>{{item.id}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.label}}</td>
+          </tr>
+        </thead>
+      </table>
+      <select
+        name="shoppingListActions"
+        id="shoppingListActions"
+      >
+        <option
+          value=""
+          v-for="action in actions"
+        >
+          {{action}}
+        </option>
+      </select>
     </div>
     <script src="https://unpkg.com/vue@3"></script>
     <script>
@@ -27,10 +55,11 @@
           return {
             header: 'Shopping List App',
             items: [
-              { id: 1, label: '10 party hats' },
-              { id: 2, label: '2 board games' },
-              { id: 3, label: '20 cups' },
+              { id: 1, quantity: 10, label: 'party hats' },
+              { id: 2, quantity: 2, label: 'board games' },
+              { id: 3, quantity: 20, label: 'cups' },
             ],
+            actions: ['Increase', 'Decrease', 'Delete'],
           };
         },
       }).mount('#shopping-list');
