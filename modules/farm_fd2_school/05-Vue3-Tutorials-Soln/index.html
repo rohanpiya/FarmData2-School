@@ -26,6 +26,13 @@
         >
           Add Item
         </button>
+        <button
+          class="btn btn-autopop"
+          v-if="items.length === 0"
+          v-on:click="autoPopulate()"
+        >
+          Auto Populate
+        </button>
       </div>
       <div
         v-if="editing"
@@ -54,10 +61,16 @@
       <p v-if="items.length === 0">Nice job! You've bought all your items!</p>
       <ul>
         <li
-          v-for="item in items"
+          v-for="(item, index) in items"
           v-bind:key="item.id"
         >
           {{item.label}}
+          <button
+            class="btn btn-removeItem"
+            v-on:click="removeItem(index)"
+          >
+            Remove
+          </button>
         </li>
       </ul>
     </div>
@@ -81,10 +94,30 @@
           saveItem() {
             this.items.push({ id: this.items.length + 1, label: this.newItem });
             this.newItem = '';
+            this.doEdit(false);
           },
           doEdit(editing) {
             this.editing = editing;
             this.newItem = '';
+          },
+          autoPopulate() {
+            this.items.push(
+              {
+                id: this.items.length + 1,
+                label: '10 party hats',
+              },
+              {
+                id: this.items.length + 1,
+                label: '2 board games',
+              },
+              {
+                id: this.items.length + 1,
+                label: '20 cups',
+              }
+            );
+          },
+          removeItem(index) {
+            this.items.splice(index, 1);
           },
         },
       }).mount('#shopping-list');
