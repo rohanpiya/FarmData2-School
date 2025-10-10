@@ -41,11 +41,12 @@
           <input
             type="checkbox"
             v-model="newItemHighPriority"
+            v-bind:disabled="!(newItemValid)"
           />
           High Priority
         </label>
         <button
-          v-bind:disabled="newItem.length < 5"
+          v-bind:disabled="!(newItemValid)"
           v-on:click="saveItem"
           class="btn btn-primary"
         >
@@ -55,7 +56,7 @@
       <p v-if="items.length === 0">Nice job! You've bought all your items!</p>
       <ul>
         <li
-          v-for="item in reversedItems"
+          v-for="item in sortedItems"
           v-bind:key="item.id"
         >
           {{item.label}}
@@ -81,6 +82,16 @@
         computed: {
           reversedItems() {
             return [...this.items].reverse();
+          },
+          newItemValid() {
+            return this.newItem.length >= 5;
+          },
+          sortedItems() {
+            return [
+              ...this.items.sort((a, b) =>
+                a.label.localeCompare(b.label, undefined, { numeric: true })
+              ),
+            ];
           },
         },
         methods: {
