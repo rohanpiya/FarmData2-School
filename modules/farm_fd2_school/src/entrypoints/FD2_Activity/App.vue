@@ -115,7 +115,7 @@
       value="Submit"
       class="label-margin"
       v-bind:disabled="!formValid"
-      v-on:click="console.log('Submit button clicked.')"
+      v-on:click="submitForm"
     />
     <input
       type="button"
@@ -172,6 +172,11 @@ export default {
       this.quantity = 1;
       this.unit = null;
       this.comment = '';
+    },
+    submitForm() {
+      console.log(
+        ' The Submit button was clicked. And, the submitForm method works!'
+      );
     },
   },
   watch: {
