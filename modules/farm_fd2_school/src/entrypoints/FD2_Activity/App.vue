@@ -173,10 +173,17 @@ export default {
       this.unit = null;
       this.comment = '';
     },
-    submitForm() {
+    async submitForm() {
       console.log(
         ' The Submit button was clicked. And, the submitForm method works!'
       );
+      const standardQuantity = await farmosUtil.createStandardQuantity(
+        'weight',
+        this.quantity,
+        'harvest',
+        this.unit.attributes.name
+      );
+      console.log(standardQuantity);
     },
   },
   watch: {
