@@ -30,4 +30,17 @@ describe('FD2-Tutorial - A First Test', () => {
       .should('not.be.enabled');
     cy.get('[data-cy="add-item-button"]').should('not.exist');
   });
+
+  it('Save item adds the new item to the shopping list', () => {
+    cy.visit('./index.html');
+    cy.get('[data-cy="add-item-button"]').click();
+    cy.get('[data-cy="new-item-input"]').type('apple');
+    cy.get('[data-cy="save-item-button"]').should('not.be.enabled');
+
+    cy.get('[data-cy="new-item-input"]').type('apples');
+    cy.get('[data-cy="save-item-button"]').should('be.enabled');
+    cy.get('[data-cy="save-item-button"]').click();
+
+    cy.get('[data-cy="shopping-list"]').should('contain.text', 'apples');
+  });
 });
