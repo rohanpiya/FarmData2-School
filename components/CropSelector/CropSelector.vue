@@ -171,10 +171,9 @@ export default {
         this.cropList = Array.from(cropMap.keys());
         this.canCreateCrop = canCreate;
 
-        if (this.canCreateCrop) {
+        if (this.canCreateCrop && this.allowAdd) {
           this.popupUrl = '/admin/structure/taxonomy/manage/plant_type/add';
         }
-
         /**
          * The select has been populated with the list of crops and the component is ready to be used.
          */
