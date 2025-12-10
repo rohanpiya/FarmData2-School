@@ -108,7 +108,6 @@ export default {
 
     allowAdd: {
       type: Boolean,
-      default: true,
     },
   },
   data() {
