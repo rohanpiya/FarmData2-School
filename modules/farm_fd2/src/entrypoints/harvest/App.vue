@@ -3,7 +3,6 @@
     id="OSS1"
     data-cy="OSS1"
   >
-    <!-- This is a comment for my draft pull request. -->
     <div
       id="harvest-header"
       data-cy="harvest-header"
@@ -26,6 +25,7 @@
       v-bind:showValidityStyling="true"
       v-model:selected="crop"
       v-on:error="(msg) => showErrorToast('Network Error', msg)"
+      v-bind:allowAdd="false"
     />
 
     <hr />
