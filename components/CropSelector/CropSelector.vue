@@ -105,7 +105,9 @@ export default {
       type: Boolean,
       default: false,
     },
-
+    /**
+     * Whether to show the "+" add-crop button.
+     */
     allowAdd: {
       type: Boolean,
       default: true,
