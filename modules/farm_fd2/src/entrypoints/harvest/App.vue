@@ -47,6 +47,7 @@
           v-for="plant in sortedPlantList"
           v-bind:key="plant.id"
         >
+          <!-- This is a comment -->
           <td>
             <input
               type="radio"
